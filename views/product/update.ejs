@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Form</title>
+</head>
+<body>
+    <h1>Edit Form</h1>
+    <form action="/products/<%= product._id %>?_method=PUT" method="post" >
+        <label for="name"><b>Name:</b></label>
+        <input type="text" name="name" id="name" value="<%= product.name %>">
+        <br>
+        <label for="price"><b>Price:</b></label>
+        <input type="text" name="price" id="price" value="<%= product.price %>">
+        <br>
+        <!-- <b>Select Category[Fruit,vegetable,dairy]:</b>
+        <input type="text" name="category" id="category" value="<%= product.category %>"> -->
+        <label for="category"><b>Category:</b></label>
+        <select name="category" id="category">
+            <option value="fruit">Fruit</option>
+            <option value="vegetable">Vegetable</option>
+            <option value="dairy">Dairy</option>
+        </select>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <a href="/products/<%= product._id %>">Cancel</a>
+</body>
+</html>
