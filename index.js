@@ -8,7 +8,7 @@ app.use(methodOverride('_method'))
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
 app.use(express.urlencoded({extended:true}));
-
+const categories=['fruit','vegetable','dairy'];
 
 mongoose.connect('mongodb://127.0.0.1:27017/shopApp')
 .then(()=>{
@@ -27,7 +27,7 @@ app.get('/products',async (req,res)=>{
 })
 
 app.get('/products/new',async (req,res)=>{
-    res.render('product/new');
+    res.render('product/new',{categories});
 })
 
 app.post('/products',async (req,res)=>{
@@ -56,7 +56,7 @@ app.get('/products/:id', async (req, res) => {
 app.get('/products/:id/edit',async (req,res)=>{
   const {id}=req.params;
   const product=await Product.findById(id);
-  res.render('product/update',{product});
+  res.render('product/update',{product,categories});
 
 })
 

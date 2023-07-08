@@ -6,7 +6,7 @@
     <title>Update Form</title>
 </head>
 <body>
-    <h1>Edit Form</h1>
+    <h1>Edit Product</h1>
     <form action="/products/<%= product._id %>?_method=PUT" method="post" >
         <label for="name"><b>Name:</b></label>
         <input type="text" name="name" id="name" value="<%= product.name %>">
@@ -18,9 +18,9 @@
         <input type="text" name="category" id="category" value="<%= product.category %>"> -->
         <label for="category"><b>Category:</b></label>
         <select name="category" id="category">
-            <option value="fruit">Fruit</option>
-            <option value="vegetable">Vegetable</option>
-            <option value="dairy">Dairy</option>
+            <% for(category of categories){ %>
+                <option value="<%=category %>" <%= product.category===category?'selected':'' %> > <%=category %> </option>
+            <% } %>
         </select>
         <br>
         <button type="submit">Submit</button>

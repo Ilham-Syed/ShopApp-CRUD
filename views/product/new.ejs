@@ -15,14 +15,21 @@
         <input type="text" name="price" id="price">
         <br>
         <b>Select Category:</b>
-        <input type="radio" name="category" id="fruit" value="fruit">
+        <!-- <input type="radio" name="category" id="fruit" value="fruit">
         <label for="fruit">Fruit</label>
         <input type="radio" name="category" id="vegetable" value="vegetable">
         <label for="vegetable">Vegetable</label>
         <input type="radio" name="category" id="dairy" value="dairy">
-        <label for="dairy">Dairy</label>
+        <label for="dairy">Dairy</label> -->
+        <select name="category" id="category">
+            <% for(category of categories){ %>
+                <option value="<%=category %>" > <%=category %> </option>
+            <% } %>
+        </select>
         <br>
         <button type="submit">Submit</button>
+        <br>
+        <a href="/products/">Cancel</a>
     </form>
 </body>
 </html>
