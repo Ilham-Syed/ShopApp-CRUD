@@ -13,5 +13,8 @@ The project includes features such as listing products, displaying product detai
 npm install
 
 2.Set up the MongoDB database:
+
 Update the MongoDB connection URL in the app.js file to match your database configuration:
+
 mongoose.connect('mongodb://127.0.0.1:27017/shopApp')
+
