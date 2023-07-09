@@ -8,7 +8,10 @@ app.use(methodOverride('_method'))
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
 app.use(express.urlencoded({extended:true}));
+
+
 const categories=['fruit','vegetable','dairy'];
+
 
 mongoose.connect('mongodb://127.0.0.1:27017/shopApp')
 .then(()=>{
@@ -64,6 +67,12 @@ app.put('/products/:id',async (req,res)=>{
   const {id}=req.params;
   const product= await Product.findByIdAndUpdate(id,req.body,{runValidators:true,new:true});
   res.redirect(`/products/${id}`);
+})
+
+app.delete('/products/:id/delete', async (req,res)=>{
+  const {id}=req.params;
+  const product=await Product.findByIdAndDelete(id);
+  res.redirect('/products');
 })
 
 app.listen(3000,()=>{
