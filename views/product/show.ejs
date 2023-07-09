@@ -20,6 +20,8 @@
     <br>
     <a href="/products">All Products</a>
     <br>
+    <br>
+    <a href="/products?category=<%= product.category %>">Show More of category: <%=product.category %></a>
     <form action="/products/<%= product._id %>/delete?_method=DELETE" method="post">
         <button>Delete</button>
     </form>

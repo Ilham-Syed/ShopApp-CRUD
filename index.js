@@ -24,9 +24,16 @@ mongoose.connect('mongodb://127.0.0.1:27017/shopApp')
 
 
 app.get('/products',async (req,res)=>{
-    const products=await Product.find({}); 
-    // console.log(products);
-    res.render('product/index',{products});
+    const {category}=req.query;
+    if(category){
+      const products=await Product.find({category});
+      res.render('product/index',{products,category})
+    }else{
+      const products=await Product.find({}); 
+      const category="All"
+      res.render('product/index',{products,category});
+    }
+    
 })
 
 app.get('/products/new',async (req,res)=>{
